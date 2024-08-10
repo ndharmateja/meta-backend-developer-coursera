@@ -11,3 +11,12 @@ class Booking(models.Model):
 
     def __str__(self):
         return self.first_name + " " + self.last_name
+
+
+# Add code to create Menu model
+class Menu(models.Model):
+    name = CharField(max_length=200)
+    price = IntegerField()
+
+    def __str__(self) -> str:
+        return self.name
