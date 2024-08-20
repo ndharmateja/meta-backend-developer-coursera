@@ -21,7 +21,7 @@ def about(request):
 def reservations(request):
     bookings = models.Booking.objects.all()
     bookings_data = {"bookings": bookings}
-    return render(request, "bookings.html", {"bookings": bookings_data})
+    return render(request, "restaurant/bookings.html", {"bookings": bookings_data})
 
 
 def book(request):
@@ -31,13 +31,13 @@ def book(request):
         if form.is_valid():
             form.save()
     context = {"form": form}
-    return render(request, "book.html", context)
+    return render(request, "restaurant/book.html", context)
 
 
 def menu(request):
     menu_data = models.Menu.objects.all()
     main_data = {"menu": menu_data}
-    return render(request, "menu.html", {"menu": main_data})
+    return render(request, "restaurant/menu.html", {"menu": main_data})
 
 
 def display_menu_item(request, pk=None):
@@ -45,7 +45,7 @@ def display_menu_item(request, pk=None):
         menu_item = models.Menu.objects.get(pk=pk)
     else:
         menu_item = ""
-    return render(request, "menu_item.html", {"menu_item": menu_item})
+    return render(request, "restaurant/menu_item.html", {"menu_item": menu_item})
 
 
 @csrf_exempt
