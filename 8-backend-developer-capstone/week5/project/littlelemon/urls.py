@@ -21,5 +21,7 @@ from django.urls import include, path
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("restaurant.urls")),
-    path("", include("littlelemon_api.urls")),
+    path("api/", include("littlelemon_api.urls")),
+    path("auth/", include("djoser.urls")),
+    path("auth/", include("djoser.urls.authtoken")),
 ]
