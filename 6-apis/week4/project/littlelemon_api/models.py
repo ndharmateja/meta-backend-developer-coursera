@@ -56,4 +56,3 @@ class OrderItem(Model):
 
     class Meta:
         unique_together = ("order", "menuitem")
-        unique_together = ("order", "menuitem")
