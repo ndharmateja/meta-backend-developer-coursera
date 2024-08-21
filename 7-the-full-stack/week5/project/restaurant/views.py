@@ -67,9 +67,12 @@ def bookings(request):
         else:
             return HttpResponse("{'error':1}", content_type="application/json")
 
-    date = request.GET.get("date", datetime.today().date())
+    date = request.GET.get("date", None)
+    if date is not None:
+        bookings = models.Booking.objects.all().filter(reservation_date=date)
+    else:
+        bookings = models.Booking.objects.all()
 
-    bookings = models.Booking.objects.all().filter(reservation_date=date)
     booking_json = serializers.serialize("json", bookings)
 
     return HttpResponse(booking_json, content_type="application/json")
